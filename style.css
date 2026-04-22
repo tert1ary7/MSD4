@@ -1,0 +1,15 @@
+/* Financial View: Hexes glow based on $ value/waste */
+.hex.financial-high { background: #5bc0de; box-shadow: inset 0 0 10px #2aabd2; } /* High value/active */
+.hex.financial-waste { background: #333; opacity: 0.5; } /* Paid for, but idle */
+
+/* Fragility State: 1 leg left in a triad */
+.hex.fragile { border: 2px solid var(--state-fail); animation: alert-pulse 1s infinite; }
+
+.btn-warn { background: transparent; border: 1px solid var(--state-warn); color: var(--state-warn); cursor: pointer; padding: 5px 10px; font-size: 10px; }
+.btn-crit { background: transparent; border: 1px solid var(--state-fail); color: var(--state-fail); cursor: pointer; padding: 5px 10px; font-size: 10px; }
+
+@keyframes alert-pulse {
+    0% { box-shadow: 0 0 0px var(--state-fail); }
+    50% { box-shadow: 0 0 20px var(--state-fail); }
+    100% { box-shadow: 0 0 0px var(--state-fail); }
+}
