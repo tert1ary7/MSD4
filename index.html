@@ -1,16 +1,65 @@
-<header class="dashboard-header">
-    <div class="system-meta">
-        <span class="label">MODE:</span> 
-        <select id="view-mode">
-            <option value="health">SYSTEM HEALTH</option>
-            <option value="financial">FINANCIAL BURN</option>
-        </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems Topology v4.0 | Light Command</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="command-center">
+        <header class="dashboard-header">
+            <div class="kpi-group">
+                <div class="kpi alert-critical">
+                    <span class="label">CRITICAL ACTIONS</span>
+                    <span id="stat-critical" class="value">0</span>
+                </div>
+                <div class="kpi">
+                    <span class="label">AVAILABILITY</span>
+                    <span id="stat-avail" class="value">100%</span>
+                </div>
+                <div class="kpi">
+                    <span class="label">REDUNDANCY RISK</span>
+                    <span id="stat-risk" class="value">0</span>
+                </div>
+            </div>
+
+            <div class="search-bay">
+                <input type="text" id="global-search" placeholder="Search Assets or Vendors..." autocomplete="off">
+            </div>
+
+            <div class="kpi">
+                <span class="label">HOSTS ONLINE</span>
+                <span id="stat-host" class="value">90/90</span>
+            </div>
+        </header>
+
+        <main class="viewport">
+            <aside class="host-tower">
+                <div class="section-tag">INFRASTRUCTURE STATUS</div>
+                <div id="host-stack" class="scroll-stack"></div>
+            </aside>
+
+            <section class="service-matrix">
+                <div class="section-tag">LOGICAL LICENSE SERVICES</div>
+                <div id="hex-grid" class="grid-container"></div>
+            </section>
+        </main>
+
+        <!-- Interrogation Overlay -->
+        <div id="details-overlay" class="hidden">
+            <div class="details-content">
+                <div class="details-header">
+                    <h3 id="detail-title">ASSET_ID</h3>
+                    <button class="close-btn" onclick="closeDetails()">✕</button>
+                </div>
+                <div id="detail-legs" class="leg-report"></div>
+                <div class="details-actions">
+                    <button id="ack-btn" class="action-btn">MARK AS KNOWN ISSUE</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sim-controls">
-        <button id="chaos-btn" class="btn-warn">ENGAGE CHAOS ENGINE</button>
-        <button id="kill-dc1" class="btn-crit">KILL DC-1</button>
-    </div>
-    <div class="search-bay">
-        <input type="text" id="global-search" placeholder="SIMULATE ASSET LOAD...">
-    </div>
-</header>
+    <script src="app.js"></script>
+</body>
+</html>
